@@ -1,13 +1,19 @@
 .PHONY: clean test all 
 
-CFLAGS += -mmcu=atmega128 
+CFLAGS += -mmcu=atmega128 -I include
+
+vpath %.c src
+vpath %.h include
 
 CC = avr-gcc
 
 all: demo-rs232.elf 
 
-demo-rs232.elf: demo-rs232.c rs232.o 
+demo-rs232.elf: demo-rs232.o rs232.o 
 	$(CC) $(CFLAGS) $^ -o $@
+
+demo-rs232.o: demo-rs232.c rs232.h
+	$(CC) -c $(CFLAGS) $<
 
 rs232.o: rs232.c rs232.h config.h rs232_atmega128.h
 	$(CC) -c $(CFLAGS) $<
