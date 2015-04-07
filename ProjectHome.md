@@ -1,0 +1,1 @@
+The project contains bunch of snippets which I write myself or adapt from other free open source software. It's only for the convenience of myself. Hopefully, there are something helpful for you.
